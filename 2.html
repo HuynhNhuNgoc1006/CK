@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .menu {
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+
+    .nav {
+        display:flex;
+        margin:10px 20px;
+        gap:20px;
+    }
+
+    .trip-row {
+        display:flex;
+        justify-content:space-between;
+        align-items: center;
+    }
+
+    .city-wrapper {
+        display:flex;
+        justify-content:center;
+    }
+
+    .hero-banner {
+        overflow: hidden;
+    }
+    .hero-banner img {
+        object-fit: cover;
+    }
+
+    .city-box {
+        display:flex;
+        overflow: hidden;
+    }
+
+    .city-box {
+        object-fit: cover;
+    }
+
+    .city-content {
+        display:flex;
+        flex-direction:column;
+        position: relative;
+
+    }
+
+    .city-price {
+        position:absolute;
+    }
+
+    ******
+
+    .news-grid {
+        display:gird;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin:0 auto;
+    }
+
+    .news-card {
+        display:flex;
+        flex-direction:column;
+        justify-content: space-between;
+    }
+
+    .location {
+        text-transform: uppercase;
+    }
+
+    .news-footer {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+
+    .news-body {
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow:1;
+    }
+
+    *******
+
+    .footer {
+        display:gird;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        align-items: flex-start;
+    }
+
+    .footer-subscribe .subscribe-form {
+        display:flex;
+    }
+
+</style>
+<body>
+    <header class="menu">
+        <div class="logo">E-flight</div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">Flight</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="hero-wrapper">
+        <div class="trip-row">
+            <h2 class="trip-title">Trip from Vietnam</h2>
+            <div class="trip-box">
+                <p>Exclusive Offer</p>
+            </div>
+        </div>
+        <div class="hero-banner">
+            <img src="https://pos.nvncdn.com/86c7ad-50310/art/artCT/20230420_7EZ6al08.png" alt="Hero Banner">
+        </div>
+        <div class="city-wrapper">
+            <div class="city-box">
+                <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="Vịnh Hạ Long">
+                <div class="city-content">
+                    <h3>Vịnh Hạ Long</h3>
+                    <p>12 Dec - 20 Dec</p>
+                    <p>Direct flight available</p>
+                    <div class="city-price">2.400.000VND</div>
+                </div>
+            </div>
+            <div class="city-box">
+                <img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/7/28/1074239/1.jpg" alt="Đà Nẵng">
+                <div class="city-content">
+                    <h3>Đà Nẵng</h3>
+                    <p>12 Dec - 20 Dec</p>
+                    <p>Direct flight available</p>
+                    <div class="city-price">3.600.000VND</div>
+                </div>
+            </div>
+        </div>        
+    </div>
+    <section class="whats-new">
+        <h2>What's new?</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="https://sakos.vn/wp-content/uploads/2024/09/thumb-3.jpg" alt="Phố cổ Hội An">
+                <div class="news-body">
+                    <div class="location">Phố cổ Hội An</div>
+                    <div class="status">Nơi hội tụ đủ về ẩm thực và văn hóa</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div>
+             <div class="news-card">
+                <img src="https://imghappyvietnam.vnanet.vn/MediaUpload/Org/2024/07/04/101119-vna_potal_du_lich_viet_nam_1_nam_sau_ngay_mo_cua_6628525.jpg" alt="Hà Giang">
+                <div class="news-body">
+                    <div class="location">Hà Giang</div>
+                    <div class="status">Điểm cực bắc Việt Nam với những ruộng bậc thang tuyệt đẹp</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div> <div class="news-card">
+                <img src="https://pos.nvncdn.com/86c7ad-50310/art/artCT/20230420_gzHlsKeC.png" alt="Đà Lạt">
+                <div class="news-body">
+                    <div class="location">Đà Lạt</div>
+                    <div class="status">Thành phố ngàn hoa và đầy sương mù</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-subscribe">
+            <h4>E-flight</h4>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="copyright">2025 Company Inc.</p>
+        </div>
+        <div class="footer-col">
+            <h4>About us</h4>
+            <p><a href="#">How it works</a></p>
+            <p><a href="#">Terms</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Flight</h4>
+            <p><a href="#">Booking Policy</a></p>
+            <p><a href="#">Promotions</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact us</h4>
+            <p><a href="#">Facebook</a></p>
+            <p><a href="#">Instagram</a></p>
+        </div>
+    </footer>
+</body>
+</html>

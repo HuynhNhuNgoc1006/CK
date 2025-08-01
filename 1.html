@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: #ffffee;
+        } 
+        .menu {
+            display:flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            margin: 10px 20px;
+            font-weight: bold;
+            color: #1e90ff;
+        }
+        .nav {
+            display:flex;
+            margin: 10px 20px;
+            gap: 20px;
+        }
+        .nav a {
+            text-decoration: none;
+            color: #222;
+        }
+
+        .hero-wrapper {
+            background-color: #333;
+            padding: 20px;
+            max-width: 100%;
+        }
+        .trip-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .trip-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .trip-box {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: 14px;
+            color: #333;
+        }
+
+        .hero-banner {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+        .hero-banner img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .city-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .city-box {
+            display: flex;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            margin: 20px auto;
+            height: 150px;
+            width: 900px;
+            background-color: #fff;
+        }
+        .city-box img {
+            width: 50%;
+            height: auto;
+            object-fit: cover;
+        }
+        .city-content {
+            width: 50%;
+            padding: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        .city-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        .city-content p {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 6px;
+        }
+        .city-price {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1e90ff;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .whats-new {
+            padding: 30px 20px;
+            background-color: #fffeef;
+            text-align: center;
+        }
+        .whats-new h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .news-card {
+            background-color: white;
+            border: 1px solid#ddd;
+            border-radius: 10px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: auto;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+        }
+        .news-card img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .location {
+            font-size: 12px;
+            color: #555;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .status {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: auto;
+        }
+        .news-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 12px;
+        }
+        .date {
+            font-size: 12px;
+            color: #777;
+        }
+        .read-more {
+            background-color: transparent;
+            border: 1px solid#aaa;
+            padding: 4px 12px;
+            font-size: 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: 0.3s ease; 
+        }
+        .read-more:hover {
+            background-color: #eee;
+        }
+
+        .news-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+
+        .footer {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 30px;
+            padding: 40px 20px;
+            background-color: #333;
+            color: white;
+            align-items: flex-start;
+        }
+        .footer h4 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+        .footer-col p{
+            margin: 8px 0;
+        }
+        .footer-subscribe .subscribe-form {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+        .footer-subscribe input {
+            width: 200px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+        }
+        .footer-subscribe button {
+            padding: 10px 16px;
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .footer-subscribe button:hover {
+            background-color: #3aa1ff;;
+        }
+        .footer-subscribe .copyright {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="menu">
+        <div class="logo">E-flight</div>
+        <nav class="nav">
+            <a href="#">Home</a>
+            <a href="#">Flight</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+    <div class="hero-wrapper">
+        <div class="trip-row">
+            <h2 class="trip-title">Trip from Vietnam</h2>
+            <div class="trip-box">
+                <p>Exclusive Offer</p>
+            </div>
+        </div>
+        <div class="hero-banner">
+            <img src="https://pos.nvncdn.com/86c7ad-50310/art/artCT/20230420_7EZ6al08.png" alt="Hero Banner">
+        </div>
+        <div class="city-wrapper">
+            <div class="city-box">
+                <img src="https://dulichtoday.vn/wp-content/uploads/2017/04/vinh-Ha-Long.jpg" alt="Vịnh Hạ Long">
+                <div class="city-content">
+                    <h3>Vịnh Hạ Long</h3>
+                    <p>12 Dec - 20 Dec</p>
+                    <p>Direct flight available</p>
+                    <div class="city-price">2.400.000VND</div>
+                </div>
+            </div>
+            <dic class="city-box">
+                <img src="https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/7/28/1074239/1.jpg" alt="Đà Nẵng">
+                <div class="city-content">
+                    <h3>Đà Nẵng</h3>
+                    <p>12 Dec - 20 Dec</p>
+                    <p>Direct flight available</p>
+                    <div class="city-price">3.600.000VND</div>
+                </div>
+            </dic>
+        </div>        
+    </div>
+    <section class="whats-new">
+        <h2>What's new?</h2>
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="https://sakos.vn/wp-content/uploads/2024/09/thumb-3.jpg" alt="Phố cổ Hội An">
+                <div class="news-body">
+                    <div class="location">Phố cổ Hội An</div>
+                    <div class="status">Nơi hội tụ đủ về ẩm thực và văn hóa</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div>
+             <div class="news-card">
+                <img src="https://imghappyvietnam.vnanet.vn/MediaUpload/Org/2024/07/04/101119-vna_potal_du_lich_viet_nam_1_nam_sau_ngay_mo_cua_6628525.jpg" alt="Hà Giang">
+                <div class="news-body">
+                    <div class="location">Hà Giang</div>
+                    <div class="status">Điểm cực bắc Việt Nam với những ruộng bậc thang tuyệt đẹp</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div> <div class="news-card">
+                <img src="https://pos.nvncdn.com/86c7ad-50310/art/artCT/20230420_gzHlsKeC.png" alt="Đà Lạt">
+                <div class="news-body">
+                    <div class="location">Đà Lạt</div>
+                    <div class="status">Thành phố ngàn hoa và đầy sương mù</div>
+                    <div class="news-footer">
+                        <div class="date">Dec 24, 2022</div>
+                        <button class="read-more">Read more</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer-subscribe">
+            <h4>E-flight</h4>
+            <form class="subscribe-form">
+                <input type="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p class="copyright">2025 Company Inc.</p>
+        </div>
+        <div class="footer-col">
+            <h4>About us</h4>
+            <p><a href="#">How it works</a></p>
+            <p><a href="#">Terms</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Flight</h4>
+            <p><a href="#">Booking Policy</a></p>
+            <p><a href="#">Promotions</a></p>
+        </div>
+        <div class="footer-col">
+            <h4>Contact us</h4>
+            <p><a href="#">Facebook</a></p>
+            <p><a href="#">Instagram</a></p>
+        </div>
+    </footer>
+</body>
+</html>
