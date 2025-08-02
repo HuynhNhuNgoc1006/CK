@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký Học kỳ quân đội</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS tùy chỉnh cho modal */
+        #fromdangky {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="container mx-auto p-4">
+        <!-- Phần banner -->
+        <div class="flex flex-col items-center justify-center h-full text-white">
+            <img src="website.png" alt="Banner Học kỳ quân đội" class="w-full h-[300px] object-cover block rounded-lg shadow-md">
+        </div>
+        
+        <!-- Thanh điều hướng -->
+        <nav class="bg-white rounded-lg shadow-md p-2 flex space-x-4 mb-8">
+            <a href="#" class="text-blue-600 hover:underline">Trang chủ SYC</a>
+            <a href="#" onclick="dangkythamgia()" class="text-gray-800 hover:underline cursor-pointer">Đăng ký tham gia</a>
+        </nav>
+
+        <!-- Phần nội dung chính (bảng) -->
+        <main id="mainContent">
+            <div class="bg-white rounded-lg shadow-md p-4">
+                <h2 class="text-xl font-bold text-center mb-4 uppercase text-gray-800">DANH SÁCH HỌC VIÊN ĐĂNG KÝ</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ và tên</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Giới tính</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số điện thoại</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày sinh</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Địa chỉ</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Khóa học</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Học phí</th>
+                            </tr>
+                        </thead>
+                        <tbody id="DANHSACH" class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">1</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">Hoàng Lâm</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Nam</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">090008888</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">20/03/2010</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">123 Nguyễn Du P5 Gò Vấp TPHCM</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">6 tuần</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">8.000.000</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="text-center mt-4 text-gray-500">
+                        <p>MSSV_Họ và tên SV_Lớp</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Modal form đăng ký - Ban đầu ẩn -->
+        <div id="fromdangky" class="fixed inset-0 z-50 overflow-y-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">
+                <!-- Nút đóng form -->
+                <button onclick="dongfrom()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+
+                <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">THÔNG TIN HỌC VIÊN</h2>
+
+                <form id="DKHOTEN" class="space-y-4">
+                    <!-- Họ và tên -->
+                    <div>
+                        <label for="full-name" class="block text-sm font-medium text-gray-700">Họ và tên <span class="text-red-500">*</span></label>
+                        <div class="mt-1">
+                            <input type="text" id="full-name" name="fullName" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                        <p id="full-name-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+                    
+                    <!-- Giới tính -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Giới tính <span class="text-red-500">*</span></label>
+                        <div class="mt-1 flex space-x-4">
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="Nam" class="form-radio text-blue-600">
+                                <span class="ml-2 text-gray-700">Nam</span>
+                            </label>
+                            <label class="inline-flex items-center">
+                                <input type="radio" name="gender" value="Nữ" class="form-radio text-blue-600">
+                                <span class="ml-2 text-gray-700">Nữ</span>
+                            </label>
+                        </div>
+                        <p id="gender-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+
+                    <!-- Số điện thoại -->
+                    <div>
+                        <label for="DKSDT" class="block text-sm font-medium text-gray-700">Số điện thoại <span class="text-red-500">*</span></label>
+                        <div class="mt-1">
+                            <input type="tel" id="DKSDT" name="phoneNumber" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="012-3456789">
+                        </div>
+                        <p id="DKSDT-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+
+                    <!-- Ngày sinh -->
+                    <div>
+                        <label for="DKNGAYSINH" class="block text-sm font-medium text-gray-700">Ngày sinh <span class="text-red-500">*</span></label>
+                        <div class="relative mt-1">
+                            <input type="text" id="DKNGAYSINH" name="dateOfBirth" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="dd/mm/yyyy">
+                            <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p id="DKNGAYSINH-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+
+                    <!-- Địa chỉ -->
+                    <div>
+                        <label for="DKDIACHI" class="block text-sm font-medium text-gray-700">Địa chỉ</label>
+                        <div class="mt-1">
+                            <input type="text" id="DKDIACHI" name="DKDIACHI" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Khóa học -->
+                    <div>
+                        <label for="KHOAHOC" class="block text-sm font-medium text-gray-700">Bạn muốn tham gia khóa nào? <span class="text-red-500">*</span></label>
+                        <div class="mt-1">
+                            <select id="KHOAHOC" name="KHOAHOC" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                                <option value="" data-fee="0" disabled selected>Chọn khóa học</option>
+                                <option value="Khóa 2 tuần" data-fee="5000000">Khóa 2 tuần</option>
+                                <option value="Khóa 6 tuần" data-fee="8000000">Khóa 6 tuần</option>
+                            </select>
+                        </div>
+                        <p id="KHOAHOC-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+
+                    <!-- Học phí -->
+                    <div>
+                        <label for="HOCPHI" class="block text-sm font-medium text-gray-700">Học phí</label>
+                        <div class="mt-1">
+                            <input type="text" id="HOCPHI" name="tuitionFee" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm bg-gray-50 cursor-not-allowed sm:text-sm" disabled>
+                        </div>
+                    </div>
+
+                    <!-- Ảnh đại diện -->
+                    <div>
+                        <label for="avatar" class="block text-sm font-medium text-gray-700">Ảnh đại diện <span class="text-red-500">*</span></label>
+                        <div class="mt-1">
+                            <input type="file" id="avatar" name="avatar" class="block w-full text-sm text-gray-500
+                                file:mr-4 file:py-2 file:px-4
+                                file:rounded-full file:border-0
+                                file:text-sm file:font-semibold
+                                file:bg-violet-50 file:text-violet-700
+                                hover:file:bg-violet-100
+                            ">
+                        </div>
+                        <p id="avatar-error" class="text-sm text-red-500 mt-1"></p>
+                    </div>
+                    
+                    <!-- Nút lưu -->
+                    <div class="pt-4">
+                        <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            Lưu
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('DKHOTEN');
+            const studentList = document.getElementById('DANHSACH');
+            const tuitionFeeInput = document.getElementById('HOCPHI');
+            const KHOAHOCSelect = document.getElementById('KHOAHOC');
+
+            // Cập nhật học phí khi chọn khóa học
+            KHOAHOCSelect.addEventListener('change', function() {
+                const selectedOption = this.options[this.selectedIndex];
+                const fee = selectedOption.getAttribute('data-fee');
+                tuitionFeeInput.value = fee ? parseFloat(fee).toLocaleString('vi-VN') : '';
+            });
+
+            // Hàm hiển thị lỗi
+            function showError(fieldId, message) {
+                const errorElement = document.getElementById(fieldId + '-error');
+                if (errorElement) {
+                    errorElement.textContent = message;
+                }
+            }
+
+            // Hàm xóa lỗi
+            function clearErrors() {
+                const errorElements = document.querySelectorAll('.text-red-500');
+                errorElements.forEach(el => el.textContent = '');
+            }
+
+            // Hàm kiểm tra form
+            function validateForm() {
+                let isValid = true;
+                clearErrors();
+
+                // a. Kiểm tra Họ và tên
+                const fullName = document.getElementById('full-name').value.trim();
+                const nameParts = fullName.split(' ').filter(part => part !== '');
+                if (fullName === '') {
+                    showError('full-name', 'Họ tên không được để trống.');
+                    isValid = false;
+                } else if (nameParts.length < 2) {
+                    showError('full-name', 'Họ tên phải có ít nhất 2 từ.');
+                    isValid = false;
+                } else {
+                    const isCapitalized = nameParts.every(part => {
+                        return part.length > 0 && part[0] === part[0].toUpperCase();
+                    });
+                    if (!isCapitalized) {
+                        showError('full-name', 'Mỗi từ trong họ tên phải viết hoa chữ cái đầu.');
+                        isValid = false;
+                    }
+                }
+                
+                // Kiểm tra Giới tính
+                const gender = form.querySelector('input[name="gender"]:checked');
+                if (!gender) {
+                    showError('gender', 'Vui lòng chọn giới tính.');
+                    isValid = false;
+                }
+
+                // b. Kiểm tra Số điện thoại
+                const phoneNumber = document.getElementById('DKSDT').value.trim();
+                const phoneRegex = /^\d{3}-\d{7}$/;
+                if (phoneNumber === '') {
+                    showError('DKSDT', 'Số điện thoại không được để trống.');
+                    isValid = false;
+                } else if (!phoneRegex.test(phoneNumber)) {
+                    showError('DKSDT', 'Số điện thoại không đúng định dạng (VD: 012-3456789).');
+                    isValid = false;
+                }
+
+                // c. Kiểm tra Ngày sinh
+                const dobInput = document.getElementById('DKNGAYSINH').value.trim();
+                const dobParts = dobInput.split('/');
+                if (dobInput === '' || dobParts.length !== 3) {
+                    showError('DKNGAYSINH', 'Ngày sinh không hợp lệ. Vui lòng nhập theo định dạng dd/mm/yyyy.');
+                    isValid = false;
+                } else {
+                    const day = parseInt(dobParts[0], 10);
+                    const month = parseInt(dobParts[1], 10);
+                    const year = parseInt(dobParts[2], 10);
+
+                    const dob = new Date(year, month - 1, day);
+                    const now = new Date();
+                    const age = now.getFullYear() - dob.getFullYear();
+                    const monthDiff = now.getMonth() - dob.getMonth();
+                    if (monthDiff < 0 || (monthDiff === 0 && now.getDate() < dob.getDate())) {
+                        age--;
+                    }
+
+                    if (isNaN(dob.getTime()) || dob.getFullYear() !== year || dob.getMonth() !== month - 1 || dob.getDate() !== day) {
+                        showError('DKNGAYSINH', 'Ngày sinh không hợp lệ. Vui lòng kiểm tra lại.');
+                        isValid = false;
+                    } else if (age < 15 || age > 18) {
+                        showError('DKNGAYSINH', 'Tuổi phải từ 15 đến 18.');
+                        isValid = false;
+                    }
+                }
+                
+                // Kiểm tra Khóa học
+                if (KHOAHOCSelect.value === '') {
+                    showError('KHOAHOC', 'Vui lòng chọn một khóa học.');
+                    isValid = false;
+                }
+
+                // e. Kiểm tra Ảnh đại diện
+                const avatar = document.getElementById('avatar');
+                if (avatar.files.length > 0) {
+                    const file = avatar.files[0];
+                    const fileType = file.type;
+                    if (!['image/jpeg', 'image/png', 'image/gif'].includes(fileType)) {
+                        showError('avatar', 'File ảnh không hợp lệ. Vui lòng chọn file .jpg, .png hoặc .gif.');
+                        isValid = false;
+                    }
+                } else {
+                    showError('avatar', 'Vui lòng tải lên ảnh đại diện.');
+                    isValid = false;
+                }
+
+                return isValid;
+            }
+
+            // Xử lý sự kiện submit form
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Ngăn chặn submit form mặc định
+                
+                if (validateForm()) {
+                    // Lấy dữ liệu từ form
+                    const fullName = document.getElementById('full-name').value.trim();
+                    const gender = form.querySelector('input[name="gender"]:checked').value;
+                    const phoneNumber = document.getElementById('DKSDT').value.trim();
+                    const dateOfBirth = document.getElementById('DKNGAYSINH').value.trim();
+                    const DKDIACHI = document.getElementById('DKDIACHI').value.trim();
+                    const KHOAHOC = document.getElementById('KHOAHOC').value;
+                    const tuitionFee = document.getElementById('HOCPHI').value;
+                    
+                    // Thêm dữ liệu vào bảng
+                    const newRow = document.createElement('tr');
+                    const rowCount = studentList.getElementsByTagName('tr').length + 1;
+                    newRow.innerHTML = `
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${rowCount}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${fullName}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${gender}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${phoneNumber}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${dateOfBirth}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${DKDIACHI}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${KHOAHOC}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${tuitionFee}</td>
+                    `;
+                    studentList.appendChild(newRow);
+
+                    // Đóng modal và reset form
+                    dongfrom();
+                    form.reset();
+                    tuitionFeeInput.value = '';
+                }
+            });
+        });
+
+        // Hàm mở modal
+        function dangkythamgia() {
+            document.getElementById('fromdangky').style.display = 'flex';
+        }
+
+        // Hàm đóng modal
+        function dongfrom() {
+            document.getElementById('fromdangky').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

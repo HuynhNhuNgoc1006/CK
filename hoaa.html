@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Flower</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Dancing Script Font -->
+    
+    <style>
+        .header-container {
+            background-image: url('http://googleusercontent.com/file_content/0');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .flower-title {
+            font-family: 'Dancing Script', cursive;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Header Section -->
+    <div class="header-container h-96 flex flex-col items-center justify-center text-pink text-center p-4 rounded-b-lg">
+        
+        <img src="website.png" alt="banner" class="absolute inset-0 w-full h-full object-cover">
+        
+        <div class="relative z-10">
+            
+            <h1 class="flower-title text-5xl md:text-6xl font-bold">Trang Flower</h1>
+            <p class="text-lg md:text-xl">DỊCH VỤ ĐIỆN HOA | GIAO HOA NHANH CHÓNG</p>
+            <p class="text-lg md:text-xl">freeship nội thành hcm</p>
+            <p class="mt-4 md:mt-8 text-sm md:text-base">Hotline: 0365.999.139 | 0789.79.22.66</p>
+            <p class="text-sm md:text-base">https://trangflower.vn/</p>
+        </div>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="bg-white shadow-md flex justify-center py-4 px-2 rounded-t-lg">
+        <ul class="flex space-x-4 md:space-x-8 lg:space-x-12">
+            <li><a class="text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300" href="#">TRANG CHỦ</a></li>
+            <li><a class="text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300" href="#" id="LienKet">ĐẶT MUA HOA</a></li>
+            <li><a class="text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300" href="#">CÂY XANH VĂN PHÒNG</a></li>
+            <li><a class="text-gray-700 font-semibold hover:text-blue-600 transition-colors duration-300" href="#">TIN TỨC</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8 p-4">
+        <div class="flex flex-wrap lg:flex-nowrap gap-8">
+            <!-- Sidebar with image -->
+            <div class="w-full lg:w-1/4">
+                <img src="https://placehold.co/200x200/cccccc/333333?text=Cây+xanh" alt="Cây xanh văn phòng" class="w-full h-auto rounded-lg shadow-md">
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="w-full lg:w-3/4 bg-white p-6 rounded-lg shadow-md">
+                <h4 class="text-center text-xl font-bold mb-6">DANH SÁCH THÔNG TIN ĐẶT HÀNG NHANH</h4>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ Và Tên</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Số Điện Thoại</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ngày Đặt</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email Của Bạn</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Loại Hoa</th>
+                                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Loại Thanh Toán</th>
+                            </tr>
+                        </thead>
+                        <tbody id="BANGTHEM" class="bg-white divide-y divide-gray-200">
+                            <!-- Dữ liệu mẫu -->
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Student Info Section -->
+                <div class="bg-gray-200 p-4 mt-8 rounded-lg text-center">
+                    <p class="text-gray-800">
+                        <strong class="font-bold">MSSV:</strong> 23721021
+                        <strong class="font-bold ml-4">Lớp:</strong> DHTMDT19D
+                        <strong class="font-bold ml-4">Họ Và Tên:</strong> Huỳnh Như Ngọc
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal for Order Form -->
+    <div id="orderModal" class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center p-4 transition-opacity duration-300 invisible opacity-0 z-50">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md transform transition-transform scale-95">
+            <div class="flex justify-between items-center mb-4">
+                <h5 class="text-xl font-bold">ĐẶT MUA HOA</h5>
+                <button id="NUTDONG" class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="orderForm" class="space-y-4">
+                    <div>
+                        <label for="fullName" class="block text-sm font-medium text-gray-700">Họ Và Tên</label>
+                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-2" id="fullName" value="">
+                        <div class="text-red-500 text-sm mt-1" id="tblTen"></div>
+                    </div>
+                    <div>
+                        <label for="phoneNumber" class="block text-sm font-medium text-gray-700">Số Điện Thoại</label>
+                        <input type="text" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-2" id="phoneNumber">
+                        <div class="text-red-500 text-sm mt-1" id="tblPhone"></div>
+                    </div>
+                    <div>
+                        <label for="orderDate" class="block text-sm font-medium text-gray-700">Ngày Đặt</label>
+                        <input type="date" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-2" id="orderDate">
+                        <div class="text-red-500 text-sm mt-1" id="tblDate"></div>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email Của Bạn</label>
+                        <input type="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-2" id="email">
+                        <div class="text-red-500 text-sm mt-1" id="tblEmail"></div>
+                    </div>
+                    <div>
+                        <label for="flowerType" class="block text-sm font-medium text-gray-700">Chọn Loại Hoa</label>
+                        <select class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500 sm:text-sm p-2" id="flowerType">
+                            <option value="" selected>-- Chọn loại hoa --</option>
+                            <option value="Hoa hồng">Hoa Hồng</option>
+                            <option value="Hoa hướng dương">Hoa Hướng Dương</option>
+                            <option value="Hoa tulip">Hoa Tulip</option>
+                            <option value="Hoa lan">Hoa Lan</option>
+                            <option value="Hoa cẩm chướng">Hoa Cẩm Chướng</option>
+                        </select>
+                        <div class="text-red-500 text-sm mt-1" id="flowerTypeError"></div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700">Loại Thanh Toán</label>
+                        <div class="mt-2 flex space-x-4">
+                            <div class="flex items-center">
+                                <input type="radio" name="tbThanhToan" id="ThanhToan" value="Tiền mặt" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                                <label for="ThanhToan" class="ml-2 block text-sm text-gray-900">Tiền mặt</label>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="radio" name="tbThanhToan" id="CK" value="Chuyển khoản" class="focus:ring-green-500 h-4 w-4 text-green-600 border-gray-300">
+                                <label for="CK" class="ml-2 block text-sm text-gray-900">Chuyển khoản</label>
+                            </div>
+                        </div>
+                        <div class="text-red-500 text-sm mt-1" id="tbThanhToanError"></div>
+                    </div>
+                    <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 mt-4">Đặt Hàng</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Lấy các phần tử HTML cần thiết
+        const LienKet = document.getElementById('LienKet');
+        const NUTDONG = document.getElementById('NUTDONG');
+        const orderModal = document.getElementById('orderModal');
+        const orderForm = document.getElementById('orderForm');
+        const BANGTHEM = document.getElementById('BANGTHEM');
+        const ktSV = document.querySelector('.student-info p');
+
+        // Hàm hiển thị modal
+        function showModal() {
+            orderModal.classList.remove('invisible', 'opacity-0');
+            orderModal.classList.add('visible', 'opacity-100');
+        }
+
+        // Hàm ẩn modal
+        function hideModal() {
+            orderModal.classList.remove('visible', 'opacity-100');
+            orderModal.classList.add('invisible', 'opacity-0');
+        }
+
+        // Hàm kiểm tra và thêm thông tin sinh viên
+        function ktSVfn() {
+           
+
+            ktSV.innerHTML = `
+                <strong class="font-bold">MSSV:</strong> ${mssv} 
+                <strong class="font-bold ml-4">Lớp:</strong> ${lop} 
+                <strong class="font-bold ml-4">Họ Và Tên:</strong> ${hoVaTen}
+            `;
+
+            // Thiết lập giá trị mặc định cho form
+            document.getElementById('fullName').value = hoVaTen;
+        }
+
+        // Gọi hàm khi trang tải xong
+        document.addEventListener('DOMContentLoaded', ktSVfn);
+
+        // Sự kiện click nút "ĐẶT MUA HOA"
+        LienKet.addEventListener('click', showModal);
+
+        // Sự kiện click nút đóng modal
+        NUTDONG.addEventListener('click', hideModal);
+
+        // Sự kiện click ngoài modal để đóng
+        window.addEventListener('click', (e) => {
+            if (e.target === orderModal) {
+                hideModal();
+            }
+        });
+
+        // Hàm kiểm tra hợp lệ form
+        function tbLoi() {
+            let isValid = true;
+
+            // Xóa thông báo lỗi cũ
+            document.querySelectorAll('.text-red-500').forEach(el => el.textContent = '');
+            document.querySelectorAll('input, select').forEach(el => el.classList.remove('border-red-500'));
+
+            // a. Tất cả các thành phần không rỗng
+            const fullName = document.getElementById('fullName');
+            const phoneNumber = document.getElementById('phoneNumber');
+            const orderDate = document.getElementById('orderDate');
+            const email = document.getElementById('email');
+            const flowerType = document.getElementById('flowerType');
+            const tbThanhToan = document.querySelector('input[name="tbThanhToan"]:checked');
+
+            if (fullName.value.trim() === '') {
+                document.getElementById('tblTen').textContent = 'Họ và tên không được để trống.';
+                fullName.classList.add('border-red-500');
+                isValid = false;
+            }
+            if (phoneNumber.value.trim() === '') {
+                document.getElementById('tblPhone').textContent = 'Số điện thoại không được để trống.';
+                phoneNumber.classList.add('border-red-500');
+                isValid = false;
+            }
+            if (orderDate.value.trim() === '') {
+                document.getElementById('tblDate').textContent = 'Ngày đặt không được để trống.';
+                orderDate.classList.add('border-red-500');
+                isValid = false;
+            }
+            if (email.value.trim() === '') {
+                document.getElementById('tblEmail').textContent = 'Email không được để trống.';
+                email.classList.add('border-red-500');
+                isValid = false;
+            }
+            if (flowerType.value === '') {
+                document.getElementById('flowerTypeError').textContent = 'Vui lòng chọn loại hoa.';
+                flowerType.classList.add('border-red-500');
+                isValid = false;
+            }
+            if (!tbThanhToan) {
+                document.getElementById('tbThanhToanError').textContent = 'Vui lòng chọn loại thanh toán.';
+                isValid = false;
+            }
+
+            // b. Họ Và Tên: ít nhất 2 từ và ký tự đầu tiên của mỗi từ phải viết hoa
+            const namePattern = /^([A-Z][a-zà-ỹ]*\s+)+[A-Z][a-zà-ỹ]*$/;
+            if (fullName.value.trim() !== '' && !namePattern.test(fullName.value.trim())) {
+                document.getElementById('tblTen').textContent = 'Họ và tên phải có ít nhất 2 từ và viết hoa chữ cái đầu mỗi từ.';
+                fullName.classList.add('border-red-500');
+                isValid = false;
+            }
+            
+            // c. Số Điện Thoại: theo mẫu 0XXX.XXX.XXX
+            const phonePattern = /^0\d{3}\d{3}\d{3}$/;
+            if (phoneNumber.value.trim() !== '' && !phonePattern.test(phoneNumber.value.trim())) {
+                document.getElementById('tblPhone').textContent = 'Số điện thoại không hợp lệ (mẫu: 0XXX.XXX.XXX).';
+                phoneNumber.classList.add('border-red-500');
+                isValid = false;
+            }
+
+            // d. Ngày Đặt sau ngày hiện tại
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(orderDate.value);
+            if (orderDate.value.trim() !== '' && selectedDate <= today) {
+                document.getElementById('tblDate').textContent = 'Ngày đặt phải sau ngày hiện tại.';
+                orderDate.classList.add('border-red-500');
+                isValid = false;
+            }
+
+            // e. Email Của Bạn theo mẫu: name_email@iuh.edu.vn
+            const emailPattern = /^[a-zA-Z0-9_]{3,}@iuh\.edu\.vn$/;
+            if (email.value.trim() !== '' && !emailPattern.test(email.value.trim())) {
+                document.getElementById('tblEmail').textContent = 'Email không hợp lệ (mẫu: name_email@iuh.edu.vn, name_email ít nhất 3 ký tự).';
+                email.classList.add('border-red-500');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // Sự kiện submit form
+        orderForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if (tbLoi()) {
+                // Lấy dữ liệu từ form
+                const fullName = document.getElementById('fullName').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const orderDate = document.getElementById('orderDate').value;
+                const email = document.getElementById('email').value;
+                const flowerType = document.getElementById('flowerType').value;
+                const tbThanhToan = document.querySelector('input[name="tbThanhToan"]:checked').value;
+                
+                // Đếm số hàng hiện có để tạo STT mới
+                const newRowIndex = BANGTHEM.rows.length + 1;
+
+                // Tạo hàng mới cho bảng
+                const newRow = document.createElement('tr');
+                newRow.className = 'bg-white hover:bg-gray-50'; // Tailwind classes
+                newRow.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap">${newRowIndex}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${fullName}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${phoneNumber}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${orderDate}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${email}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${flowerType}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">${tbThanhToan}</td>
+                `;
+
+                // Thêm hàng mới vào bảng
+                BANGTHEM.appendChild(newRow);
+
+                // Reset form
+                orderForm.reset();
+                document.getElementById('fullName').value = 'Họ Tên Sinh Viên'; // Set lại giá trị mặc định
+                
+                // Đóng modal
+                hideModal();
+            }
+        });
+    </script>
+</body>
+</html>
